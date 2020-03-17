@@ -1,0 +1,190 @@
+﻿<Window x:Class="LuaSTGRoadDrawer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LuaSTGRoadDrawer"
+        xmlns:avalon="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit"
+        mc:Ignorable="d"
+        Title="LuaSTG Task移动路径 点阵绘制工具" Height="480" Width="1040">
+	<Grid>
+		<Grid HorizontalAlignment="Left" Width="400">
+			<Label Content="起始坐标 X"
+				   Width="80" Height="25"
+				   Margin="10,15,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center"/>
+			<TextBox x:Name="StartPoint_X"
+					 Text="0"
+					 Width="100" Height="25"
+					 Margin="90,15,0,0"
+					 HorizontalAlignment="Left"
+					 HorizontalContentAlignment="Center"
+					 VerticalAlignment="Top"
+					 VerticalContentAlignment="Center"/>
+			<Label Content="起始坐标 Y"
+				   Width="80" Height="25"
+				   Margin="10,45,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center"/>
+			<TextBox x:Name="StartPoint_Y"
+					 Text="0"
+					 Width="100" Height="25"
+					 Margin="90,45,0,0"
+					 HorizontalAlignment="Left"
+					 HorizontalContentAlignment="Center"
+					 VerticalAlignment="Top"
+					 VerticalContentAlignment="Center"/>
+			<Label Content="结束坐标 X"
+				   Width="80" Height="25"
+				   Margin="10,75,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center"/>
+			<TextBox x:Name="EndPoint_X"
+					 Text="0"
+					 Width="100" Height="25"
+					 Margin="90,75,0,0"
+					 HorizontalAlignment="Left"
+					 HorizontalContentAlignment="Center"
+					 VerticalAlignment="Top"
+					 VerticalContentAlignment="Center"/>
+			<Label Content="结束坐标 Y"
+				   Width="80" Height="25"
+				   Margin="10,105,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center"/>
+			<TextBox x:Name="EndPoint_Y"
+					 Text="0"
+					 Width="100" Height="25"
+					 Margin="90,105,0,0"
+					 HorizontalAlignment="Left"
+					 HorizontalContentAlignment="Center"
+					 VerticalAlignment="Top"
+					 VerticalContentAlignment="Center"/>
+			<Label Content="点集数(帧数)"
+				   Width="80" Height="25"
+				   Margin="10,135,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center"/>
+			<TextBox x:Name="PointCount"
+					 Text="60"
+					 Width="100" Height="25"
+					 Margin="90,135,0,0"
+					 HorizontalAlignment="Left"
+					 HorizontalContentAlignment="Center"
+					 VerticalAlignment="Top"
+					 VerticalContentAlignment="Center"/>
+			<Label Content="移动模式"
+				   Width="80" Height="25"
+				   Margin="10,165,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center"/>
+			<ComboBox x:Name="MoveMode"
+					  Width="100" Height="25"
+					  Margin="90,165,0,0"
+					  HorizontalAlignment="Left"
+					  HorizontalContentAlignment="Center"
+					  VerticalAlignment="Top"
+					  VerticalContentAlignment="Center"
+					  Loaded="MoveMode_Loaded"
+					  SelectionChanged="MoveMode_SelectionChanged"/>
+			<Label Content="所有坐标均为double"
+				   Width="180" Height="25"
+				   Margin="10,195,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+			<Label Content="点集数必须为int"
+				   Width="180" Height="25"
+				   Margin="10,225,0,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+			<Label Content="控制点 X"
+				   Width="80" Height="25"
+				   Margin="200,0,0,130"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Bottom"
+				   VerticalContentAlignment="Center"/>
+			<TextBox x:Name="Console_X"
+					 Text="0"
+					 Width="100" Height="25"
+					 Margin="290,0,0,130"
+					 HorizontalAlignment="Left"
+					 HorizontalContentAlignment="Center"
+					 VerticalAlignment="Bottom"
+					 VerticalContentAlignment="Center"/>
+			<Label Content="控制点 Y"
+				   Width="80" Height="25"
+				   Margin="200,0,0,100"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Bottom"
+				   VerticalContentAlignment="Center"/>
+			<TextBox x:Name="Console_Y"
+					 Text="0"
+					 Width="100" Height="25"
+					 Margin="290,0,0,100"
+					 HorizontalAlignment="Left"
+					 HorizontalContentAlignment="Center"
+					 VerticalAlignment="Bottom"
+					 VerticalContentAlignment="Center"/>
+			<Button x:Name="Insert_Console"
+					Content="添加控制点"
+					Width="80" Height="25"
+					Margin="210,0,0,70"
+					Click="Insert_Console_Click"
+					VerticalAlignment="Bottom"
+					HorizontalAlignment="Left"/>
+			<Button x:Name="Remove_Console"
+					Content="移除控制点"
+					Width="80" Height="25"
+					Margin="300,0,0,70"
+					Click="Remove_Console_Click"
+					VerticalAlignment="Bottom"
+					HorizontalAlignment="Left"/>
+			<Button x:Name="Clear_Console"
+					Content="清空控制点"
+					Width="170" Height="25"
+					Margin="210,0,0,40"
+					Click="Clear_Console_Click"
+					VerticalAlignment="Bottom"
+					HorizontalAlignment="Left"/>
+			<Label Content="控制点集"
+				   Margin="200,10,10,0"
+				   HorizontalAlignment="Left"
+				   VerticalAlignment="Top"
+				   VerticalContentAlignment="Center"/>
+			<ListBox x:Name="ConsolePointList" Margin="200,40,10,170"/>
+			
+			<Grid Height="30" VerticalAlignment="Bottom">
+				<Button x:Name="Start" Content="开始生成" Click="Start_Click"/>
+			</Grid>
+		</Grid>
+		<Grid Margin="400,0,0,0">
+			<avalon:TextEditor x:Name="codeText"
+							   FontFamily="Courier New"
+							   FontSize="14"
+							   SyntaxHighlighting="Lua"
+							   ShowLineNumbers="True"
+							   Margin="0,0,0,60"/>
+			<TextBlock Text="注释:  
+POS_X, POS_Y 为起始坐标  
+TARGET_X,TARGET_Y 为结束坐标  
+FRAME为点集数(帧数)&#10;
+MODE为移动模式  
+POINTLIST 为控制点集(数组, 1位为第一个点的X, 2位为第一个点的Y...)&#10;
+yield() 会将当前的 POS_X, POS_Y 记录下来作为一个位标, 相当于LuaSTG内执行一帧"
+					   Height="50"
+					   Margin="0,0,0,5"
+					   HorizontalAlignment="Center"
+					   VerticalAlignment="Bottom"/>
+		</Grid>
+	</Grid>
+</Window>
