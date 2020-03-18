@@ -11,7 +11,6 @@ E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\bin\Release\KeraLua.dll
 E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\bin\Release\NLua.dll
 E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\bin\Release\ICSharpCode.AvalonEdit.xml
 E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\bin\Release\KeraLua.xml
-E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\obj\Release\LuaSTGRoadDrawer.csprojAssemblyReference.cache
 E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\obj\Release\MainWindow.g.cs
 E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\obj\Release\ResultWindow.g.cs
 E:\Github\LuaSTGRoadDrawer\LuaSTGRoadDrawer\obj\Release\App.g.cs

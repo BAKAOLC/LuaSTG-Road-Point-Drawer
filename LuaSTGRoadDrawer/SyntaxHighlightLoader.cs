@@ -17,7 +17,7 @@ namespace LuaSTGRoadDrawer
         public static void LoadLuaDef()
         {
             IHighlightingDefinition LuaSyntax;
-            using (StreamReader s = new StreamReader("LuaSyntax.xml"))
+            using (Stream s = Assembly.GetExecutingAssembly().GetManifestResourceStream("LuaSTGRoadDrawer.LuaSyntax.xml"))
             {
                 using (XmlTextReader reader = new XmlTextReader(s))
                 {
